@@ -122,6 +122,10 @@ body {
   transition: all 0.15s ease !important;
 }
 
+.neo-input-icon {
+  padding-left: 3rem !important;
+}
+
 .dark .neo-input {
   background-color: #0b0f19 !important;
   border-color: #ffffff !important;

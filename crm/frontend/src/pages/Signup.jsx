@@ -73,7 +73,7 @@ const Signup = () => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="John Doe"
-                  className="neo-input pl-12 text-base font-bold"
+                  className="neo-input neo-input-icon text-base font-bold"
                 />
               </div>
             </div>
@@ -94,7 +94,7 @@ const Signup = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
-                  className="neo-input pl-12 text-base font-bold"
+                  className="neo-input neo-input-icon text-base font-bold"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ const Signup = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="neo-input pl-12 text-base font-bold"
+                  className="neo-input neo-input-icon text-base font-bold"
                 />
               </div>
             </div>

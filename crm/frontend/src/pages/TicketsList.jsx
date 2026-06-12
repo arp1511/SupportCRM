@@ -171,7 +171,7 @@ const TicketsList = () => {
             placeholder="Search name, email, subject, or description..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="neo-input pl-12 text-base font-bold"
+            className="neo-input neo-input-icon text-base font-bold"
           />
         </div>
       </div>
