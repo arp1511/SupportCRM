@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 18px; /* Scales up all relative (rem) font sizes throughout the app */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 19px; /* Slightly larger on desktop viewports */
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f5f3ef; /* Warm Neo-Brutalist background */
+  color: #0f172a;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark body {
+  background-color: #0b0f19; /* High-contrast dark background */
+  color: #f8fafc;
+}
+
+/* Custom scrollbars for a premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f3ef;
+  border-left: 2px solid #0f172a;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0b0f19;
+  border-left: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border: 2px solid #f5f3ef;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border: 2px solid #0b0f19;
+}
+
+/* Neo-Brutalist Custom Classes */
+.neo-card {
+  background-color: #ffffff !important;
+  border: 2.5px solid #0f172a !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 4px 4px 0px 0px #0f172a !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark .neo-card {
+  background-color: #111827 !important;
+  border-color: #ffffff !important;
+  box-shadow: 4px 4px 0px 0px #ffffff !important;
+}
+
+.neo-card-interactive {
+  background-color: #ffffff !important;
+  border: 2.5px solid #0f172a !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 4px 4px 0px 0px #0f172a !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.dark .neo-card-interactive {
+  background-color: #111827 !important;
+  border-color: #ffffff !important;
+  box-shadow: 4px 4px 0px 0px #ffffff !important;
+}
+
+.neo-card-interactive:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 7px 7px 0px 0px #0f172a !important;
+}
+
+.dark .neo-card-interactive:hover {
+  box-shadow: 7px 7px 0px 0px #ffffff !important;
+}
+
+.neo-card-interactive:active {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 2px 2px 0px 0px #0f172a !important;
+}
+
+.dark .neo-card-interactive:active {
+  box-shadow: 2px 2px 0px 0px #ffffff !important;
+}
+
+.neo-input {
+  width: 100% !important;
+  display: block !important;
+  padding: 0.85rem 1rem !important;
+  background-color: #ffffff !important;
+  border: 2.5px solid #0f172a !important;
+  border-radius: 0.5rem !important;
+  color: #0f172a !important;
+  outline: none !important;
+  box-shadow: 2.5px 2.5px 0px 0px #0f172a !important;
+  transition: all 0.15s ease !important;
+}
+
+.dark .neo-input {
+  background-color: #0b0f19 !important;
+  border-color: #ffffff !important;
+  color: #f8fafc !important;
+  box-shadow: 2.5px 2.5px 0px 0px #ffffff !important;
+}
+
+.neo-input:focus {
+  background-color: #f5f3ff !important;
+  border-color: #7c3aed !important;
+  box-shadow: 4px 4px 0px 0px #7c3aed !important;
+}
+
+.dark .neo-input:focus {
+  background-color: #1e1b4b !important;
+  border-color: #a78bfa !important;
+  box-shadow: 4px 4px 0px 0px #a78bfa !important;
+}
+
+.neo-btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 0.85rem 1.5rem !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+  border: 2.5px solid #0f172a !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 4px 4px 0px 0px #0f172a !important;
+  cursor: pointer !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.dark .neo-btn-primary {
+  border-color: #ffffff !important;
+  box-shadow: 4px 4px 0px 0px #ffffff !important;
+}
+
+.neo-btn-primary:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px 0px #0f172a !important;
+  background-color: #6d28d9 !important;
+}
+
+.dark .neo-btn-primary:hover {
+  box-shadow: 6px 6px 0px 0px #ffffff !important;
+}
+
+.neo-btn-primary:active {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 2px 2px 0px 0px #0f172a !important;
+}
+
+.dark .neo-btn-primary:active {
+  box-shadow: 2px 2px 0px 0px #ffffff !important;
+}
+
+.neo-btn-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 0.85rem 1.5rem !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 2.5px solid #0f172a !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 4px 4px 0px 0px #0f172a !important;
+  cursor: pointer !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.dark .neo-btn-secondary {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 4px 4px 0px 0px #ffffff !important;
+}
+
+.neo-btn-secondary:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px 0px #0f172a !important;
+  background-color: #f1f5f9 !important;
+}
+
+.dark .neo-btn-secondary:hover {
+  box-shadow: 6px 6px 0px 0px #ffffff !important;
+  background-color: #374151 !important;
+}
+
+.neo-btn-secondary:active {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 2px 2px 0px 0px #0f172a !important;
+}
+
+.dark .neo-btn-secondary:active {
+  box-shadow: 2px 2px 0px 0px #ffffff !important;
+}
+
+.neo-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  border: 2px solid #0f172a !important;
+  border-radius: 2rem !important;
+}
+
+.dark .neo-badge {
+  border-color: #ffffff !important;
+}
+
