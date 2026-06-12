@@ -1,4 +1,4 @@
-# Customer Support CRM (Zendesk & Frappe CRM Inspired)
+# Customer Support CRM 
 
 A complete, production-ready, lightweight Customer Support Ticketing CRM System designed with a beautiful minimalist UI, structured AI insights (powered by Gemini), robust database indexing, and an end-to-end interactive Support Pipeline Kanban board.
 
