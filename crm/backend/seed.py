@@ -12,14 +12,7 @@ def seed_db() -> None:
     
     db: Session = SessionLocal()
     try:
-        # Check if already seeded
-        if db.query(Ticket).count() > 0 or db.query(User).count() > 0:
-            print("Database already has records. Skipping seeding.")
-            return
-
-        print("Seeding database with users and tickets...")
-
-        # Seed Users (Admins and Customers)
+        # Seed Users (Admins and Customers) if they don't exist
         users_to_create = [
             {
                 "email": "admin@crm.com",
@@ -47,18 +40,28 @@ def seed_db() -> None:
             }
         ]
 
+        seeded_new_users = False
         for u_item in users_to_create:
-            hashed_pwd = auth_service.get_password_hash(u_item["password"])
-            user = User(
-                email=u_item["email"],
-                hashed_password=hashed_pwd,
-                full_name=u_item["full_name"],
-                role=u_item["role"]
-            )
-            db.add(user)
-        db.flush()
+            existing_user = db.query(User).filter(User.email == u_item["email"]).first()
+            if not existing_user:
+                hashed_pwd = auth_service.get_password_hash(u_item["password"])
+                user = User(
+                    email=u_item["email"],
+                    hashed_password=hashed_pwd,
+                    full_name=u_item["full_name"],
+                    role=u_item["role"]
+                )
+                db.add(user)
+                seeded_new_users = True
+        
+        if seeded_new_users:
+            db.commit()
 
-        sample_tickets = [
+        sample_tickets = []
+        # Seed sample tickets if there are no tickets in the database
+        if db.query(Ticket).count() == 0:
+            print("Seeding sample tickets...")
+            sample_tickets = [
             {
                 "customer_name": "Sarah Connor",
                 "customer_email": "sconnor@cyberdyne.com",
@@ -241,33 +244,34 @@ def seed_db() -> None:
             }
         ]
 
-        now = datetime.now(timezone.utc)
-        for index, item in enumerate(sample_tickets):
-            created_at = now - timedelta(days=20 - index, hours=index)
-            ticket = Ticket(
-                customer_name=item["customer_name"],
-                customer_email=item["customer_email"],
-                subject=item["subject"],
-                description=item["description"],
-                status=item["status"],
-                category=item["category"],
-                created_at=created_at,
-                updated_at=created_at
-            )
-            db.add(ticket)
-            db.flush()
-            ticket.ticket_id = f"TKT-{ticket.id:03d}"
-            
-            for note_text in item["notes"]:
-                note = Note(
-                    ticket_id=ticket.ticket_id,
-                    note_text=note_text,
-                    created_at=created_at + timedelta(minutes=30)
+        if sample_tickets:
+            now = datetime.now(timezone.utc)
+            for index, item in enumerate(sample_tickets):
+                created_at = now - timedelta(days=20 - index, hours=index)
+                ticket = Ticket(
+                    customer_name=item["customer_name"],
+                    customer_email=item["customer_email"],
+                    subject=item["subject"],
+                    description=item["description"],
+                    status=item["status"],
+                    category=item["category"],
+                    created_at=created_at,
+                    updated_at=created_at
                 )
-                db.add(note)
-        
-        db.commit()
-        print("Database successfully seeded with users and tickets!")
+                db.add(ticket)
+                db.flush()
+                ticket.ticket_id = f"TKT-{ticket.id:03d}"
+                
+                for note_text in item["notes"]:
+                    note = Note(
+                        ticket_id=ticket.ticket_id,
+                        note_text=note_text,
+                        created_at=created_at + timedelta(minutes=30)
+                    )
+                    db.add(note)
+            
+            db.commit()
+            print("Database successfully seeded with users and tickets!")
     except Exception as e:
         db.rollback()
         print(f"Error seeding database: {e}")
