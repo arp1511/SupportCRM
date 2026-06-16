@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ticketsApi } from "../api/client";
 import { SkeletonDashboard } from "../components/LoadingSpinner";
 import ErrorDisplay from "../components/ErrorDisplay";
+import FocusFrame from "../components/FocusFrame";
 import { 
   Inbox, 
   Hourglass, 
@@ -57,8 +58,8 @@ const Dashboard = () => {
       {/* Welcome Banner */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white my-0">
-            Operations Center
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white my-0 flex">
+            <FocusFrame text="Operations Center" />
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 font-semibold mt-2">
             Real-time activity summary for support inquiries.
