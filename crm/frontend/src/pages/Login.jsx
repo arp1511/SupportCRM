@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Mail, Lock, LogIn, LifeBuoy, ArrowRight } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
+import FocusFrame from "../components/FocusFrame";
 
 const Login = () => {
   const { login } = useAuth();
@@ -45,8 +46,8 @@ const Login = () => {
               <LifeBuoy className="w-10 h-10 animate-spin-slow" />
             </div>
           </div>
-          <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Welcome Back
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight flex justify-center">
+            <FocusFrame text="Welcome Back" />
           </h2>
           <p className="mt-3 text-base lg:text-lg text-slate-600 dark:text-slate-400 font-semibold">
             Sign in to access your dashboard and support tickets.

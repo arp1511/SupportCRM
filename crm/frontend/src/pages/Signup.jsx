@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { User, Mail, Lock, UserPlus, LifeBuoy, ArrowLeft } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
+import FocusFrame from "../components/FocusFrame";
 
 const Signup = () => {
   const { signup } = useAuth();
@@ -45,8 +46,8 @@ const Signup = () => {
               <LifeBuoy className="w-10 h-10 animate-spin-slow" />
             </div>
           </div>
-          <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Create Account
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight flex justify-center">
+            <FocusFrame text="Create Account" />
           </h2>
           <p className="mt-3 text-base text-slate-600 dark:text-slate-400 font-semibold">
             Sign up to manage and track your support inquiries.
