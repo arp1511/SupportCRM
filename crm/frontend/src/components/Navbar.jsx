@@ -4,6 +4,7 @@ import { LifeBuoy, LayoutDashboard, Ticket, PlusCircle, Sun, Moon, LogOut, LogIn
 import { useTheme } from "../context/ThemeContext";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
+import FocusFrame from "./FocusFrame";
 
 const Navbar = () => {
   const location = useLocation();
@@ -49,7 +50,9 @@ const Navbar = () => {
             <div className="p-2.5 bg-violet-600 text-white border-2 border-slate-900 dark:border-white rounded-xl shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]">
               <LifeBuoy className="w-6 h-6 animate-pulse" />
             </div>
-            <span className="tracking-tight hover:text-violet-600 dark:hover:text-violet-400 transition-colors">SupportCRM</span>
+            <span className="tracking-tight hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+              <FocusFrame text="SupportCRM" />
+            </span>
           </Link>
 
           <div className="flex flex-col gap-3">
@@ -132,7 +135,9 @@ const Navbar = () => {
       <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md transition-colors duration-200 px-4 py-3 flex md:hidden items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-black text-lg text-violet-600 dark:text-violet-400">
           <LifeBuoy className="w-5 h-5 animate-pulse" />
-          <span>SupportCRM</span>
+          <span className="flex items-center">
+            <FocusFrame text="SupportCRM" />
+          </span>
         </Link>
 
         <div className="flex items-center gap-2.5">
